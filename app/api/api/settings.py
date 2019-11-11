@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'treinador',
     'atleta',
-    'equipe'
+    'equipe',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+REST_FRAMEWORK = {
+
+'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
