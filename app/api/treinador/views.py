@@ -1,9 +1,12 @@
-
 from rest_framework import generics
+
 from .models import Treinador
 from .serializers import TreinadorSerializer
 
-# Create your views here.
-class TreinadorList(generics.ListCreateAPIView):
+
+class ListTreinadorView(generics.ListCreateAPIView):
+    """
+    Manipulador de Get
+    """
     queryset = Treinador.objects.all()
     serializer_class = TreinadorSerializer
