@@ -1,6 +1,5 @@
 from django.db import models
-# Create your models here.
-# from treinador import constants
+
 FUTEBOL = 'Futebol'
 VOLEI = 'Volei'
 NATACAO = 'Natacao'
@@ -23,7 +22,7 @@ class Treinador(models.Model):
         default=FUTEBOL,
     )
     def __str__(self):
-        return "Treinador: {} - Especialista em: {}".format(self.nome, self.credencial)
+        return "Treinador: {} - Credencial número: {}".format(self.nome, self.credencial)
     
     def esporte_capacitado(self):
         return self.esporte_capacitado
