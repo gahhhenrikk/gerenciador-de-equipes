@@ -10,3 +10,17 @@ class ListEquipeView(generics.ListCreateAPIView):
     """
     queryset = Equipe.objects.all()
     serializer_class = EquipeSerializer
+
+class EquipeCreateAPIView(generics.CreateAPIView):
+    queryset = Equipe.objects.all()
+    serializer_class = EquipeSerializer
+
+class EquipeDeleteView(generics.RetrieveDestroyAPIView):
+    queryset = Equipe.objects.all()
+    serializer_class = EquipeSerializer
+
+class EquipeDetailView(generics.RetrieveUpdateAPIView):
+    queryset = Equipe.objects.all()
+    serializer_class = EquipeSerializer
+
+
