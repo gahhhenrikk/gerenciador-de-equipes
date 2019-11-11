@@ -1,6 +1,7 @@
 from django.db import models
 # Create your models here.
 # from treinador import constants
+
 FUTEBOL = 'Futebol'
 VOLEI = 'Volei'
 NATACAO = 'Natacao'
@@ -45,14 +46,9 @@ class Atleta(models.Model):
         choices=ESPORTES_CAPACITADOS,
         default=FUTEBOL,
     )
-    treinador = models.IntegerField()
-    equipe=models.CharField(
-        max_length=10,
-        choices=EQUIPES,
-        default=A1,
-    )
+   
     def __str__(self):
-        return "Atleta: {} - Condição física: {} - Treinador responsável: {} - Equipe: {}".format(self.nome, self.condicao_fisica,self.treinador, self.equipe)
+        return "Atleta: {} - Condição física: {}".format(self.nome, self.condicao_fisica)
     
     def esporte_capacitado(self):
         return self.esporte_capacitado

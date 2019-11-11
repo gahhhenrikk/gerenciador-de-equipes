@@ -1,4 +1,5 @@
 from django.db import models
+# from equipe.models import Equipe
 
 FUTEBOL = 'Futebol'
 VOLEI = 'Volei'
@@ -13,7 +14,7 @@ ESPORTES_CAPACITADOS = [
 class Treinador(models.Model):
     nome = models.CharField(max_length=255, null=False)
     email = models.EmailField()
-    aniversario = models.DateField()
+    nascimento = models.DateField()
     detalhes = models.TextField()
     credencial = models.IntegerField()
     esportes_capacitados = models.CharField(
@@ -21,6 +22,8 @@ class Treinador(models.Model):
         choices=ESPORTES_CAPACITADOS,
         default=FUTEBOL,
     )
+    # equipe = models.ForeignKey(Equipe, on_delete=models.CASCADE, related_name="equipe_do_treinador", null=True)
+    
     def __str__(self):
         return "Treinador: {} - Credencial número: {}".format(self.nome, self.credencial)
     
