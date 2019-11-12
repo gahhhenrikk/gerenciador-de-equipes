@@ -1,7 +1,8 @@
-from rest_framework import generics
-
+from rest_framework import generics,status
+from rest_framework.response import Response
 from .models import Atleta
 from .serializers import AtletaSerializer
+
 
 
 class ListAtletaView(generics.ListCreateAPIView):

@@ -1,6 +1,6 @@
 from django.db import models
 # from equipe.models import Equipe
-
+from django.utils import timezone
 FUTEBOL = 'Futebol'
 VOLEI = 'Volei'
 NATACAO = 'Natacao'
@@ -13,10 +13,11 @@ ESPORTES_CAPACITADOS = [
     ]
 class Treinador(models.Model):
     nome = models.CharField(max_length=255, null=False)
+    senha = models.CharField(max_length=255, default="")
     email = models.EmailField()
-    nascimento = models.DateField()
-    detalhes = models.TextField()
-    credencial = models.IntegerField()
+    nascimento = models.DateField(default=timezone.now)
+    detalhes = models.TextField(default="")
+    credencial = models.IntegerField(default=0)
     esportes_capacitados = models.CharField(
         max_length=10,
         choices=ESPORTES_CAPACITADOS,

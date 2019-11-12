@@ -21,10 +21,10 @@ from rest_framework_swagger.views import get_swagger_view
 schema_view = get_swagger_view(title='Gerenciador de Equipes Api')
 
 urlpatterns = [
-    url(r'^$', schema_view),
+    url(r'^$', schema_view, name="documentacao-api"),
     path('admin/', admin.site.urls),
     re_path('api/v1/', include('treinador.urls')),
     re_path('api/v1/', include('atleta.urls')),
     re_path('api/v1/', include('equipe.urls')),
-   
+    re_path('api/v1/', include('competicao.urls'))
 ]
