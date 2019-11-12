@@ -14,19 +14,11 @@ const style = {
   margin: 50,
   padding: "50px 200px"
 };
-const options = [
-  { key: "f", text: "Futebol", value: "Futebol" },
-  { key: "v", text: "Volei", value: "Volei" },
-  { key: "l", text: "Luta", value: "Luta" },
-  { key: "n", text: "Natacao", value: "Natacao" }
-];
-export const Atletas = () => {
+
+export const Login = ({ tipo }) => {
   const [dados, setDados] = useState({
-    nome: "",
     email: "",
-    senha: "",
-    date: "",
-    esporte_capacitado: options[0].value
+    senha: ""
   });
   const [enviando, trocarEnviando] = useState(false);
   const [sucesso, trocarSucesso] = useState(false);
@@ -35,7 +27,6 @@ export const Atletas = () => {
   const cadastrar = async () => {
     trocarEnviando(true);
     let data = JSON.stringify({ ...dados, nascimento: dados.date });
-    console.log(dados);
     try {
       let resposta = await axios.post(
         "http://127.0.0.1:8000/api/v1/atleta/criar/",
@@ -106,7 +97,7 @@ export const Atletas = () => {
       )}
 
       <Segment>
-        <Header>Cadastre-se como um Atleta</Header>
+        <Header>Acesse como um {tipo}</Header>
       </Segment>
       <Segment>
         <Form
@@ -116,35 +107,11 @@ export const Atletas = () => {
           error={falha}
         >
           <Form.Field>
-            <label>Nome</label>
-            <input
-              placeholder="Nome"
-              value={dados.nome}
-              onChange={e => onChange("nome", e)}
-            />
-          </Form.Field>
-          <Form.Field>
             <label>Email</label>
             <input
               placeholder="Email"
               value={dados.email}
               onChange={e => onChange("email", e)}
-            />
-          </Form.Field>
-          <Form.Field
-            control={Select}
-            label="Esporte"
-            options={options}
-            placeholder="Esporte"
-            onChange={(e, v) => onChange("esporte_capacitado", e, v)}
-          />
-          <Form.Field>
-            <label>Data Nascimento</label>
-            <input
-              placeholder="Senha"
-              type="date"
-              value={dados.dataNascimento}
-              onChange={e => onChange("date", e)}
             />
           </Form.Field>
           <Form.Field>
@@ -162,13 +129,8 @@ export const Atletas = () => {
             </Button>
           </Link>
           <Button type="submit" color="green">
-            Cadastrar
+            Entrar
           </Button>
-          <Link to="/dashboard-atleta">
-            <Button type="submit" color="purple">
-              Entrar
-            </Button>
-          </Link>
         </Form>
       </Segment>
     </Container>
